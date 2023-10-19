@@ -1,0 +1,38 @@
+[
+    {
+      "brand_id": 1,
+      "brand_name": "TOYOTA",
+      "brand_image": "https://i.ibb.co/Fh6vYtj/Toyota-logo-PNG14.png"
+    },
+    {
+      "brand_id": 2,
+      "brand_name": "FORD",
+      "brand_image": "https://i.ibb.co/sqN44tZ/Ford-logo-PNG2.png"
+    },
+    {
+      "brand_id": 3,
+      "brand_name": "BMW",
+      "brand_image": "https://i.ibb.co/qmHS4kG/BMW-logo-PNG1.png"
+    },
+    {
+      "brand_id": 4,
+      "brand_name": "MERCEDES-BENZ",
+      "brand_image": "https://i.ibb.co/5K47sQ2/Mercedes-logo-PNG1.png"
+    },
+    {
+      "brand_id": 5,
+      "brand_name": "TESLA",
+      "brand_image": "https://i.ibb.co/5vqS1zP/Tesla-logo-PNG2.png"
+    },
+    {
+      "brand_id": 6,
+      "brand_name": "HONDA",
+      "brand_image": "https://i.ibb.co/k1tgzBP/Honda-logo-PNG1.png"
+    }
+  ]
+  
+
+
+
+
+
