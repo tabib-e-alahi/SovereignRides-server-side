@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const uri =`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.o8c7bsg.mongodb.net/?retryWrites=true&w=majority`;
 console.log(uri);
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -27,11 +27,25 @@ async function run() {
     await client.connect();
 
     const carCollection = client.db('carDB').collection('car');
+    const cartCollection = client.db('cartDb').collection('cart') 
 
     app.get('/car', async(req,res) =>{
         const cursor = carCollection.find()
         const result = await cursor.toArray();
         res.send(result)
+    })
+
+    app.get('/car/:id', async(req,res) =>{
+        const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await carCollection.findOne(query);
+      res.send(result);
+    })
+
+    app.get('/carCart', async(req,res) =>{
+        const cursor = cartCollection.find();
+      const result = await cursor.toArray()
+      res.send(result);
     })
 
     app.post("/car", async (req, res) => {
@@ -41,6 +55,14 @@ async function run() {
         const result = await carCollection.insertOne(newCar);
         res.send(result)
       });
+
+    app.post('/carCart', async(req,res) =>{
+      const addCar = req.body;
+      console.log(addCar);
+
+      const result = await cartCollection.insertOne(addCar);
+      res.send(result)
+    })  
 
     
     // Send a ping to confirm a successful connection
