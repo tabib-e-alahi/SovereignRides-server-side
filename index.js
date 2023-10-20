@@ -62,7 +62,29 @@ async function run() {
 
       const result = await cartCollection.insertOne(addCar);
       res.send(result)
-    })  
+    }) 
+    
+    
+    app.put("/car/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const updatedCar = req.body;
+      const car = {
+        $set: {
+          model:updatedCar.model,
+          image:updatedCar.image,
+          brand:updatedCar.brand,
+          type:updatedCar.type,
+          price:updatedCar.price,
+          rating:updatedCar.rating,
+          details:updatedCar.details
+                  },
+      };
+
+      const result = await carCollection.updateOne(filter, car, options);
+      res.send(result)
+    });
 
     
     // Send a ping to confirm a successful connection
